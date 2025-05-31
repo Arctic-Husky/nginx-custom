@@ -1,0 +1,14 @@
+services:
+  nginx:
+    build: .
+    image: nginx-full
+    container_name: nginx
+    volumes:
+      - ${CONF_PATH}:/etc/nginx/conf.d:z
+      - ${CERTBOT_CONF_PATH}:/etc/letsencrypt:z 
+      - ${CERTBOT_PATH}:/var/www/certbot:z 
+      - ${PROJECTS_PATH}:/usr/share/nginx/projects:z
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
