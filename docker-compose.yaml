@@ -1,7 +1,6 @@
 services:
   nginx:
     build: .
-    image: nginx-full-custom
     container_name: nginx
     volumes:
       - ${CONF_PATH}:/etc/nginx/conf.d:z
